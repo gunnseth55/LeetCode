@@ -1,31 +1,40 @@
 class Solution {
 public:
-    bool isPalindrome(string &s, int l, int r) {
-        while (l < r) {
-            if (s[l] != s[r]) return false;
-            l++; r--;
-        }
-        return true;
+bool isPalindrome(string s){
+    string x=s;
+    reverse(s.begin(),s.end());
+    return (x==s);
+}
+ vector<vector<string>> solve(  string &s){
+if(s.empty())return{{}};
+
+vector<vector<string>>result;
+
+for(int i=1;i<=s.size();i++){
+    string sub1=s.substr(0,i);
+    string sub2=s.substr(i);
+
+if(isPalindrome(sub1)){
+    vector<vector<string>>sub=solve(sub2);
+    for(auto &p:sub){
+        vector<string>temp;
+        temp.push_back(sub1);
+        temp.insert(temp.end(),p.begin(),p.end());
+        result.push_back(temp);
     }
 
-    void solve(int index, string &s, vector<string> &path, vector<vector<string>> &result) {
-        if (index == s.size()) {
-            result.push_back(path);
-            return;
-        }
-        for (int i = index; i < s.size(); i++) {
-            if (isPalindrome(s, index, i)) {
-                path.push_back(s.substr(index, i - index + 1));
-                solve(i + 1, s, path, result);
-                path.pop_back();
-            }
-        }
-    }
+}
+ }
+ return result;
+ }
+
+
 
     vector<vector<string>> partition(string s) {
-        vector<vector<string>> result;
-        vector<string> path;
-        solve(0, s, path, result);
+        vector<vector<string>>result;
+        if(s.empty())return result;
+      if(s.length()==1)return {{s}};
+       result= solve(s);
         return result;
     }
 };
