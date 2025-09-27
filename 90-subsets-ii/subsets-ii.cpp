@@ -9,8 +9,6 @@ public:
             int start=0;
             if(i>0 && nums[i]==nums[i-1]){
                 start=prev;
-            }else{
-                start=0;
             }
             int n=result.size();
             prev=n;
