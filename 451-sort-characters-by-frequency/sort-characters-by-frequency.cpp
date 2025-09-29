@@ -1,20 +1,23 @@
 class Solution {
 public:
     string frequencySort(string s) {
-        sort(s.begin(),s.end());
+        string result;
         map<char,int>m;
         for(char c:s){
             m[c]++;
         }
-        vector<pair<char,int>>vec(m.begin(),m.end());
-       sort(vec.begin(),vec.end(),[](const pair<char,int>&p1, const pair<char,int>&p2){
-            return p1.second>p2.second;
-        });
-        string ans;
-        for(auto x:vec){
-            string temp(x.second,x.first);
-            ans.append(temp);
-        }
-        return ans;
+        vector<pair<char,int>>temp(m.begin(),m.end());
+
+       sort(temp.begin(),temp.end(),[](const pair<char,int>p1, const pair<char,int>p2){
+        return p1.second>p2.second;
+       });
+
+       for(auto &p:temp){
+        string xx(p.second,p.first);
+        result+=xx;
+       }
+
+        return result;
+
     }
 };
