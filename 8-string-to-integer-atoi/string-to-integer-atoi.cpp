@@ -1,42 +1,33 @@
 class Solution {
 public:
-
-
     int myAtoi(string s) {
- int n=s.length();
-       if(n==0)return 0;
-        const long long MAX_INT=INT_MAX;
-        const long long MIN_INT=INT_MIN;
-      
-       int i=0;
-       int sign=1;
-       while(i<n && s[i]==' '){
-        i++;
-       }
-       if(i==n){
-        return 0;
-       }
-       if(s[i]=='+'){
-        i++;
-       }
-       else if(s[i]=='-'){
-        i++;
-        sign=-1;
-       }
-       long long res=0;
-       while(i<n && isdigit(s[i])){
-       int c=s[i]-'0';
-        res=(res*10)+(c);
-
-        if(sign*res<=INT_MIN){
-            return INT_MIN;
+       long long result=0;
+        int n=s.length();
+      int index=0,sign=1;
+        while(index<n && s[index]== ' '){
+            index++;
         }
-        if(sign*res>=INT_MAX){
-            return INT_MAX;
+        if(s[index]=='+'){
+            sign=1;
+            index++;
+        }else if(s[index]=='-'){
+            sign=-1;
+            index++;
         }
-        i++;
 
-       }
-       return static_cast<int>(sign*res);
+        while(index<n && isdigit(s[index])){
+            int x=s[index]-'0';
+            result=(result*10)+x;
+            if(sign*result<=INT_MIN){
+                return INT_MIN;
+            }
+            if(sign*result>=INT_MAX){
+                return INT_MAX;
+            }
+            index++;
+        }
+
+      return static_cast<int>(result*sign);
+        
     }
 };
