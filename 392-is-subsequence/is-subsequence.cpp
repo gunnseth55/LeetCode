@@ -15,8 +15,6 @@ public:
             }
 
         }
-        if(i!=m)return false;
-        else
-        return true;
+       return i==m;
     }
 };
