@@ -21,8 +21,8 @@ void solve(int maxx, int &count, TreeNode *root){
     if(root->left)solve(maxx,count,root->left);
 }
     int goodNodes(TreeNode* root) {
-        int maxx=INT_MIN,count=0;
-        solve(maxx,count,root);
+        int count=0;
+        solve(root->val,count,root);
         return count;
     }
 };
