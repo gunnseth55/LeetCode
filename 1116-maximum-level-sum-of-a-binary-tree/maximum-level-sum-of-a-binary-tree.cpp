@@ -34,10 +34,7 @@ public:
         }
         int maxx=INT_MIN,index=-1;
         for(int i=0;i<res.size();i++){
-            int sum=0;
-            for(int val:res[i]){
-                sum+=val;
-            }
+            int sum=accumulate(res[i].begin(),res[i].end(),0);
             if(sum>maxx){
                 maxx=sum;
                 index=1+i;
