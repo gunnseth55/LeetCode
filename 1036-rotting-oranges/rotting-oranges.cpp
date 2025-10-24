@@ -4,14 +4,6 @@ public:
         int row=grid.size(),col=grid[0].size();
         queue<pair<int,int>>q;
         int onec=0;
-        for(int a=0;a<row;a++){
-            for(int b=0;b<col;b++){
-                if(grid[a][b]==1){
-                    onec++;
-                }
-            }
-        }
-        if(onec==0)return 0;
         int dir[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
         int count=0,i,j;
         for(i=0;i<row;i++){
@@ -19,9 +11,11 @@ public:
                 if(grid[i][j]==2){
                     q.push({i,j});
                     
+                } if(grid[i][j]==1){
+                    onec++;
                 }
             }
-        }
+        } if(onec==0)return 0;
         while(!q.empty()){
             int s=q.size();
             count++;
