@@ -8,7 +8,6 @@ int solve(vector<int>&dp, int n){
 }
     int tribonacci(int n) {
         vector<int>dp(n+1,-1);
-        
         return solve(dp,n);
     }
 };
