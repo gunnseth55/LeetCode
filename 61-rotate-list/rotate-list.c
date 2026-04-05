@@ -5,7 +5,7 @@
  *     struct ListNode *next;
  * };
  */
- int count(struct ListNode *head){
+int count(struct ListNode *head){
     struct ListNode *temp=head;
     int count=0;
     while(temp!=NULL){
