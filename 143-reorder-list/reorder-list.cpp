@@ -2,8 +2,6 @@ class Solution {
 public:
     void reorderList(ListNode* head) {
         if (!head || !head->next) return;
-
-        // Step 1: Find middle
         ListNode* slow = head;
         ListNode* fast = head;
 
@@ -12,7 +10,6 @@ public:
             fast = fast->next->next;
         }
 
-        // Step 2: Reverse second half
         ListNode* prev = NULL;
         ListNode* curr = slow->next;
         slow->next = NULL;
@@ -24,7 +21,6 @@ public:
             curr = nextTemp;
         }
 
-        // Step 3: Merge two halves
         ListNode* first = head;
         ListNode* second = prev;
 
