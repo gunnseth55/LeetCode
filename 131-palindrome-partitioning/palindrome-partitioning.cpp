@@ -7,7 +7,7 @@ bool isPalindrome(string s){
 }
 
 void solve(string s,vector<vector<string>>&result,vector<string> &temp){
-if(s.size()==0)result.push_back(temp);
+if(s.size()==0)result.push_back(temp); //the sub-string that came from prev partition is now of size 0
 for(int i=0;i<s.size();i++){
     string sub1=s.substr(0,i+1);
     if(isPalindrome(sub1)){
