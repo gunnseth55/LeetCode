@@ -32,9 +32,6 @@ public:
             arr[i]->left=nullptr;
             arr[i]->right=arr[i+1];
         }
-        if(!arr.empty()){
-            arr.back()->left=nullptr;
-            arr.back()->right=nullptr;
-        }
+       
     }
 };
