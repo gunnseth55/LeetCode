@@ -5,6 +5,7 @@
  *     struct ListNode *next;
  * };
  */
+
 int count(struct ListNode *head){
     struct ListNode *temp=head;
     int count=0;
@@ -15,21 +16,20 @@ int count(struct ListNode *head){
     return count;
  }
 struct ListNode* rotateRight(struct ListNode* head, int k) {
-    if(head==NULL|| k==0)return head;
-    int x=count(head);
-    k=k%x;
-    if(k==0)return head;
+    if ( head ==NULL ||k==0) return head;
+    int ct=count(head);
     struct ListNode *temp=head;
-   for(int i=0;i<x-k-1;i++){
-    temp=temp->next;
-   }
-   struct ListNode *new=temp->next;
-   temp->next=NULL;
-struct ListNode *end=new;
-while(end->next!=NULL){
-    end=end->next;
-}
-    end->next=head;
+    k=k%ct;
+    if(k==0)return head;
+    for(int i=0;i<ct-k-1;i++){
+        head=head->next;
+    }
+    struct ListNode* new=head->next;
+    head->next=NULL;
+    struct ListNode* last=new;
+    while(last->next!=NULL){
+        last=last->next;
+    }
+    last->next=temp;
     return new;
-    
 }
